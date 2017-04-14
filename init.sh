@@ -1,2 +1,4 @@
 echo "init script"
-cp barnacle.service /lib/systemd/system/
+sudo cp barnacle.service /lib/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable barnacle.service
