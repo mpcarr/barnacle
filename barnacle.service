@@ -1,0 +1,10 @@
+[Unit]
+Description=barnacle service
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/home/volumio/barnacle/bin/python /home/volumio/barnacle/barnacle/barnacle.py  > /home/volumio/barnacle/barnacle/barnacle.log --serve-in-foreground
+
+[Install]
+WantedBy=multi-user.target
