@@ -1,2 +1,2 @@
 echo "init script"
-sudo chmod 644 barnacle.service
+cp barnacle.service /lib/systemd/system/
