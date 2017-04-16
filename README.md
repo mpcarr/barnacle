@@ -27,7 +27,7 @@ TODO - explain hardware needed
 
    ```
    apt-get update
-   apt-get install python-virtualenv python-smbus
+   apt-get install python-virtualenv python-smbus python-dev python-rpi.gpio
    ```
 5. Create a virtual enviroment for barnacle and activate it
 
