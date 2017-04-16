@@ -31,7 +31,7 @@ def on_press(value):
 
 def setup():
   GPIO.setmode(GPIO.BCM)       # Numbers GPIOs by physical location
-  global encoder = RotaryEncoder(GPIO_A, GPIO_B, callback=on_turn, buttonPin=GPIO_BUTTON, buttonCallback=on_press)
+  encoder = RotaryEncoder(GPIO_A, GPIO_B, callback=on_turn, buttonPin=GPIO_BUTTON, buttonCallback=on_press)
 
 #def loop():
 	#global globalCounter
