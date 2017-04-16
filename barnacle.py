@@ -43,13 +43,10 @@ def destroy():
   encoder.destroy()
 
 if __name__ == '__main__':     # Program start from here
-	setup()
-	try:
+  setup()
+  try:
     print("barnacle")
     signal.pause()
-		#loop()
-	except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
-		destroy()
- 
-
-
+    #loop()
+  except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+    destroy()
