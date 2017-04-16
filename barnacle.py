@@ -9,7 +9,7 @@ logger = logging.getLogger()
 logger.info('started barnacle')
 
 # The two pins that the encoder uses (BCM numbering).
-GPIO_A = 04 
+GPIO_A = 4 
 GPIO_B = 17
 
 # The pin that the knob's button is hooked up to. If you have no button, set
