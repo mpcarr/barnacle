@@ -31,7 +31,8 @@ class i2c_device:
 
 # Write a single command
    def write_cmd(self, cmd):
-      self.write_cmd_arg(0, cmd);
+     self.bus.write_byte(self.addr, cmd)
+     sleep(0.0001)
 
 # Write a command and argument
    def write_cmd_arg(self, cmd, data):
