@@ -1,2 +1,2 @@
 socketIO-client==0.7.2
-smbus2=0.1.4
+smbus2==0.1.4
