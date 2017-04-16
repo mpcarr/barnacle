@@ -9,12 +9,12 @@ logger = logging.getLogger()
 logger.info('started barnacle')
 
 # The two pins that the encoder uses (BCM numbering).
-GPIO_A = 26   
-GPIO_B = 19
+GPIO_A = 04 
+GPIO_B = 17
 
 # The pin that the knob's button is hooked up to. If you have no button, set
 # this to None.
-GPIO_BUTTON = 13
+GPIO_BUTTON = 23
 
 # This callback runs in the background thread. All it does is put turn
 # events into a queue and flag the main thread to process them. The
@@ -40,7 +40,7 @@ def setup():
     #print 'globalCounter = %d' % globalCounter
 
 def destroy():
-	GPIO.cleanup()             # Release resource
+  encoder.destroy()
 
 if __name__ == '__main__':     # Program start from here
 	setup()
