@@ -23,7 +23,7 @@ TODO - explain hardware needed
    
    Note which of the the above commands gave you the table and note the address of your lcd screen. In the image above my lcd's address is 3f
    
-4. Install python-virtualenv.
+4. Install python libraries
 
    ```
    apt-get update
