@@ -1,6 +1,7 @@
 import signal
 import logging
 import knob
+import RPi.GPIO as GPIO
 from socketIO_client import SocketIO, LoggingNamespace
 
 FORMAT = '%(asctime)-15s %(message)s'
