@@ -1,3 +1,4 @@
+import i2c_lcd_driver
 import signal
 import logging
 import knob
@@ -34,6 +35,9 @@ def setup():
   GPIO.setmode(GPIO.BCM)       # Numbers GPIOs by physical location
   global encoder
   encoder  = knob.RotaryEncoder(GPIO_A, GPIO_B, callback=on_turn, buttonPin=GPIO_BUTTON, buttonCallback=on_press)
+  mylcd = i2c_lcd_driver.lcd()
+  mylcd.lcd_display_string("Hello World!", 1)
+
 
 #def loop():
 	#global globalCounter
