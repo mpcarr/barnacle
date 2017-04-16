@@ -30,7 +30,6 @@ class RotaryEncoder:
     self.levA = 0
     self.levB = 0
     
-    GPIO.setmode(GPIO.BCM)
     GPIO.setup(self.gpioA, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(self.gpioB, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     
