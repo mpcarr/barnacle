@@ -17,7 +17,7 @@ TODO - explain hardware needed
    or  
    ```sudo i2cdetect -y 1```
    
-   one of those commands will output a table like this
+   Which of these commands works depends of which raspberry pi you own. One of those commands will output a table like this:
    
    ![alt-text](https://cloud.githubusercontent.com/assets/6593426/25049325/421a2aa4-2139-11e7-9eaf-704951280f5e.png "i2cdetect")
    
@@ -32,7 +32,7 @@ TODO - explain hardware needed
 5. Create a virtual enviroment for barnacle and activate it
 
    ```
-   virtualenv --no-site-packages barnacle
+   virtualenv --system-site-packages barnacle
    cd barnacle
    source bin/activate
    ```
@@ -42,6 +42,8 @@ TODO - explain hardware needed
 6. Install barnacle
    ```
    git clone https://github.com/mpcarr/barnacle.git
+   sh barnacle/init.sh
+   sudo reboot
    ```
    
    
