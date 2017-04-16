@@ -3,6 +3,7 @@ pip install -r barnacle/requirements.txt
 #apt-get install python-dev python-rpi.gpio
 sudo chown root.gpio /dev/gpiomem
 sudo chmod g+rw /dev/gpiomem
+sudo chmod 666 /dev/i2c-0
 #
 #
 #
