@@ -1,4 +1,5 @@
 echo "init script"
+pip install -r barnacle/requirements.txt
 #apt-get install python-dev python-rpi.gpio
 sudo chown root.gpio /dev/gpiomem
 sudo chmod g+rw /dev/gpiomem
