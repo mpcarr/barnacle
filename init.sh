@@ -8,6 +8,6 @@ sudo chmod 666 /dev/i2c-0
 #
 #
 #
-sudo cp barnacle.service /lib/systemd/system/
+sudo cp barnacle/barnacle.service /lib/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable barnacle.service
