@@ -15,6 +15,18 @@ Made available under GNU GENERAL PUBLIC LICENSE
 
 """
 
+"""
+
+4x20 LCD
+
+0x80 | 
+0xC0 |
+0x94 |
+0xd4 | 
+
+
+"""
+
 # i2c bus (0 -- original Pi, 1 -- Rev 2 Pi)
 I2CBUS = 0
 
