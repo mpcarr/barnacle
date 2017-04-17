@@ -47,6 +47,8 @@ def setup():
   lcd.lcd_load_custom_chars(fontdata1)
   lcd.lcd_write(0x80)
   lcd.lcd_write_char(0)
+  sleep(0.2)
+  lcd.lcd_strobe()
 
 
 #def loop():
