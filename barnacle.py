@@ -104,7 +104,8 @@ def setup():
     lcd.lcd_write_char(0)
     lcd.lcd_write_char(1)
     lcd.lcd_write_char(2)
-    count = count + 1  
+    sleep(0.4)
+    count = count + 1
 
   #lcd.lcd_write(0xC0)
   #lcd.lcd_write_char(3)
