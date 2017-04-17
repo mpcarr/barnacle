@@ -15,12 +15,12 @@ GPIO_BUTTON = 23
 
 def on_turn(delta):
   if delta == -1:
-    print("clockwise")
+    volumio.menuDown()
   else:
-    print("anti-clockwise")
+    volumio.menuUp()
   
 def on_press(value):
-  print("button pressed")
+  volumio.enter()
 
 def setup():
   FORMAT = '%(asctime)-15s %(message)s'
@@ -33,9 +33,9 @@ def setup():
   encoder  = knob.RotaryEncoder(GPIO_A, GPIO_B, callback=on_turn, buttonPin=GPIO_BUTTON, buttonCallback=on_press)
   global lcd
   lcd = i2c_lcd_driver.lcd()
-  lcd.lcd_display_string("barnacle", 2)
+  lcd.lcd_display_string("barnacle started", 2)
   global volumio
-  volumio = volumio.VolumioAPI(logger)
+  volumio = volumio.VolumioAPI(logger, lcd)
  
 #def loop():
 	#global globalCounter
