@@ -26,6 +26,7 @@ class VolumioAPI:
     socketIO.on('connect', on_connect)
     socketIO.on('disconnect', on_disconnect)
     socketIO.on('reconnect', on_reconnect)
+    socketIO.wait(seconds=1)
     self.testLogger()
 
   def testLogger(self):
