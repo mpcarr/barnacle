@@ -14,29 +14,39 @@ logger.info('started barnacle')
 GPIO_A = 4 
 GPIO_B = 17
 
-# The pin that the knob's button is hooked up to. If you have no button, set
-# this to None.
+# The pin that the knob's button is hooked up to.
 GPIO_BUTTON = 23
 
-# This callback runs in the background thread. All it does is put turn
-# events into a queue and flag the main thread to process them. The
-# queueing ensures that we won't miss anything if the knob is turned
-# extremely quickly.
 def on_turn(delta):
-  print("%f", delta);
-  #QUEUE.put(delta)
-  #EVENT.set()
+  if(delta==-1)
+    print("clockwise")
+  else
+    print("anti-clockwise")
   
 def on_press(value):
-  print("Toggled button")
-  #EVENT.set()  
+  print("button pressed")
 
 def setup():
   GPIO.setmode(GPIO.BCM)       # Numbers GPIOs by physical location
   global encoder
   encoder  = knob.RotaryEncoder(GPIO_A, GPIO_B, callback=on_turn, buttonPin=GPIO_BUTTON, buttonCallback=on_press)
-  mylcd = i2c_lcd_driver.lcd()
-  mylcd.lcd_display_string("Hello World!", 1)
+  global lcd
+  lcd = i2c_lcd_driver.lcd()
+  lcd.lcd_display_string("barnacle", 1)
+  fontdata1 = [      
+        [ 0b11000,
+	0b01100,
+	0b00110,
+	0b00011,
+	0b00011,
+	0b00110,
+	0b01100,
+	0b11000 ],
+  ]
+
+  lcd.lcd_load_custom_chars(fontdata1)
+  lcd.lcd_write(0x80)
+  lcd.lcd_write_char(0)
 
 
 #def loop():
