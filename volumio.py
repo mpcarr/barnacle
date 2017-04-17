@@ -6,6 +6,8 @@ logging.basicConfig(format=FORMAT,filename='/home/volumio/barnacle/barnacle.log'
 logger = logging.getLogger()
 logger.info('volumio api started')
 
+global socketIO
+
 def on_connect():
   print('connect')
   socketIO.emit('getState')
