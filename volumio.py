@@ -1,10 +1,4 @@
 from socketIO_client import SocketIO, LoggingNamespace
-import logging
-
-FORMAT = '%(asctime)-15s %(message)s'
-logging.basicConfig(format=FORMAT,filename='/home/volumio/barnacle/barnacle.log',level=logging.INFO)
-logger = logging.getLogger()
-logger.info('volumio api started')
 
 class VolumioAPI:
   
@@ -28,7 +22,7 @@ class VolumioAPI:
     print('connect')
     self.socketIO.on('pushBrowseSources', self.on_browseSources)
     self.socketIO.emit('getBrowseSources', {})
-    self.socketIO.wait()
+    self.socketIO.wait(seconds=1)
 
   def on_browseSources(self, *args):
     print(args)
