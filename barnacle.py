@@ -4,12 +4,7 @@ import logging
 import knob
 from time import sleep
 import RPi.GPIO as GPIO
-from socketIO_client import SocketIO, LoggingNamespace
-
-FORMAT = '%(asctime)-15s %(message)s'
-logging.basicConfig(format=FORMAT,filename='/home/volumio/barnacle/barnacle.log',level=logging.INFO)
-logger = logging.getLogger()
-logger.info('started barnacle')
+import volumio
 
 # The two pins that the encoder uses (BCM numbering).
 GPIO_A = 4 
@@ -28,12 +23,19 @@ def on_press(value):
   print("button pressed")
 
 def setup():
+  FORMAT = '%(asctime)-15s %(message)s'
+  logging.basicConfig(format=FORMAT,filename='/home/volumio/barnacle/barnacle.log',level=logging.INFO)
+  logger = logging.getLogger()
+  logger.info('started barnacle')	
+	
   GPIO.setmode(GPIO.BCM)       # Numbers GPIOs by physical location
   global encoder
   encoder  = knob.RotaryEncoder(GPIO_A, GPIO_B, callback=on_turn, buttonPin=GPIO_BUTTON, buttonCallback=on_press)
   global lcd
   lcd = i2c_lcd_driver.lcd()
   lcd.lcd_display_string("barnacle", 2)
+  global volumio
+  volumio = volumio.Volumio(logger)
  
 #def loop():
 	#global globalCounter
