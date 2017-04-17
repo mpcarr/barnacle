@@ -17,13 +17,13 @@ class VolumioAPI:
     self.logger.info('test logger')
     
   def on_connect(self):
-    logger.info('connect')
+    self.logger.info('connect')
 
   def on_disconnect(self):
-    logger('disconnect')
+    self.logger('disconnect')
 
   def on_reconnect(self):
-    logger('reconnect')    
+    self.logger('reconnect')    
     
   def getBrowseableSources(self):
-    logger.info('get sources')
+    self.logger.info('get sources')
