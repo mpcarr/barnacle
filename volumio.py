@@ -5,8 +5,8 @@ class VolumioAPI:
   global logger
   
   def __init__(self, log):
-    logger = log
-    logger.info('volumio socket init: connecting...') 
+    self.logger = log
+    self.logger.info('volumio socket init: connecting...') 
     self.testLogger()
     #socketIO = SocketIO('localhost', 3000)
     #socketIO.on('connect', self.on_connect)
@@ -15,7 +15,7 @@ class VolumioAPI:
 
     
   def testLogger(self)
-    logger.info('test logger')
+    self.logger.info('test logger')
     
   def on_connect(self):
     logger.info('connect')
