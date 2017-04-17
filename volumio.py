@@ -16,13 +16,13 @@ class VolumioAPI:
     self.socketIO.on('pushBrowseSources', self.on_browseSources)    
     self.socketIO.wait(seconds=1)
    
-  def menuDown:
+  def menuDown():
     self.logger.info('menu down')
     
-  def menuUp:
+  def menuUp():
     self.logger.info('menu up')
     
-  def enter:
+  def enter():
     self.logger.info('enter')
     
   def on_connect(self):
