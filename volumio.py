@@ -8,12 +8,16 @@ logger.info('volumio api started')
 
 def on_connect():
   print('connect')
+  socketIO.emit('getState')
 
 def on_disconnect():
   print('disconnect')
 
 def on_reconnect():
   print('reconnect')
+  
+def on_pushState(*args):
+  print(args)
 
 class VolumioAPI:
   
@@ -26,6 +30,7 @@ class VolumioAPI:
     socketIO.on('connect', on_connect)
     socketIO.on('disconnect', on_disconnect)
     socketIO.on('reconnect', on_reconnect)
+    socketIO.on('pushState', on_pushState)
     socketIO.wait(seconds=1)
     self.testLogger()
 
