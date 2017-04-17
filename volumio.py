@@ -6,21 +6,6 @@ logging.basicConfig(format=FORMAT,filename='/home/volumio/barnacle/barnacle.log'
 logger = logging.getLogger()
 logger.info('volumio api started')
 
-global socketIO
-
-def on_connect():
-  print('connect')
-  socketIO.emit('getState')
-
-def on_disconnect():
-  print('disconnect')
-
-def on_reconnect():
-  print('reconnect')
-  
-def on_pushState(*args):
-  print(args)
-
 class VolumioAPI:
   
   #global logger
@@ -28,18 +13,29 @@ class VolumioAPI:
   def __init__(self, log):
     self.logger = log
     self.logger.info('volumio socket init: connecting...') 
-    socketIO = SocketIO('localhost', 3000)
-    socketIO.on('connect', on_connect)
-    socketIO.on('disconnect', on_disconnect)
-    socketIO.on('reconnect', on_reconnect)
-    socketIO.on('pushState', on_pushState)
-    socketIO.wait(seconds=1)
+    self.socketIO = SocketIO('localhost', 3000)
+    self.socketIO.on('connect', self.on_connect)
+    self.socketIO.on('disconnect', self.on_disconnect)
+    self.socketIO.on('reconnect', self.on_reconnect)
+    self.socketIO.on('pushState', self.on_pushState)
+    self.socketIO.wait(seconds=1)
     self.testLogger()
 
   def testLogger(self):
     self.logger.info('test logger')
     
-     
+  def on_connect(self):
+    print('connect')
+    self.socketIO.emit('getState')
+
+  def on_disconnect(self):
+    print('disconnect')
+
+  def on_reconnect(self):
+    print('reconnect')
+  
+  def on_pushState(self, *args):
+    print(args)     
     
   def getBrowseableSources(self):
     self.logger.info('get sources')
