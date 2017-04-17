@@ -8,13 +8,13 @@ class VolumioAPI:
     logger = log
     logger.info('volumio socket init: connecting...') 
     self.testLogger()
-    socketIO = SocketIO('localhost', 3000)
-    socketIO.on('connect', self.on_connect)
-    socketIO.on('disconnect', self.on_disconnect)
-    socketIO.on('reconnect', self.on_reconnect)
+    #socketIO = SocketIO('localhost', 3000)
+    #socketIO.on('connect', self.on_connect)
+    #socketIO.on('disconnect', self.on_disconnect)
+    #socketIO.on('reconnect', self.on_reconnect)
 
     
-  def testLogger()
+  def testLogger(self)
     logger.info('test logger')
     
   def on_connect(self):
