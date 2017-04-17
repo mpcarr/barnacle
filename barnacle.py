@@ -33,16 +33,79 @@ def setup():
   global lcd
   lcd = i2c_lcd_driver.lcd()
   lcd.lcd_display_string("barnacle", 2)
-  fontdata1 = [      
-        [ 0b11000,
-	0b01100,
-	0b00110,
-	0b00011,
-	0b00011,
-	0b00110,
-	0b01100,
-	0b11000 ],
-  ]
+  fontdata1 = [
+        # char(0) - Upper-left character
+        [ 0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b11111, 
+          0b11111 ],
+
+        # char(1) - Upper-middle character
+        [ 0b00000, 
+          0b00000, 
+          0b00100, 
+          0b00110, 
+          0b00111, 
+          0b00111, 
+          0b11111, 
+          0b11111 ],
+        
+        # char(2) - Upper-right character
+        [ 0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b10000, 
+          0b11000 ],
+        
+        # char(3) - Lower-left character
+        [ 0b11111, 
+          0b11111, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000 ],
+       
+        # char(4) - Lower-middle character
+        [ 0b11111, 
+          0b11111, 
+          0b00111, 
+          0b00111, 
+          0b00110, 
+          0b00100, 
+          0b00000, 
+          0b00000 ],
+        
+        # char(5) - Lower-right character
+        [ 0b11000, 
+          0b10000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000, 
+          0b00000 ],
+      ]
+
+  lcd.lcd_load_custom_chars(fontdata1)
+
+  lcd.lcd_write(0x80)
+  lcd.lcd_write_char(0)
+  lcd.lcd_write_char(1)
+  lcd.lcd_write_char(2)
+
+  lcd.lcd_write(0xC0)
+  lcd.lcd_write_char(3)
+  lcd.lcd_write_char(4)
+  lcd.lcd_write_char(5)
 
   lcd.lcd_load_custom_chars(fontdata1)
   lcd.lcd_write(0x80)
