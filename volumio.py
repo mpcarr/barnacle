@@ -17,16 +17,17 @@ class VolumioAPI:
     self.socketIO.on('disconnect', self.on_disconnect)
     self.socketIO.on('reconnect', self.on_reconnect)
     self.socketIO.on('pushBrowseSources', self.on_browseSources)
+    self.socketIO.wait(seconds=1)
     
     connection_timeout = 60
-    while connection_timeout > 0 or self.connected == False:
+    while connection_timeout > 0 and self.connected == False:
       if self.connected:
         connection_timeout = 0
       else:
         self.lcd.lcd_clear()
         self.lcd.lcd_display_string("Volumio connecting..", 2)
         self.lcd.lcd_display_string("Timeout in  {}".format(connection_timeout), 3)
-        #self.socketIO.wait(seconds=1)
+        self.socketIO.wait(seconds=1)
         sleep(1)
         connection_timeout = connection_timeout - 1
       
