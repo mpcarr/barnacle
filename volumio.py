@@ -1,9 +1,10 @@
 from socketIO_client import SocketIO, LoggingNamespace
+import logging
 
 FORMAT = '%(asctime)-15s %(message)s'
 logging.basicConfig(format=FORMAT,filename='/home/volumio/barnacle/barnacle.log',level=logging.INFO)
 logger = logging.getLogger()
-logger.info('started barnacle')
+logger.info('volumio api started')
 
 def on_connect():
   logger.info('connect')
