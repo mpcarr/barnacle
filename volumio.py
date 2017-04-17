@@ -8,6 +8,7 @@ class VolumioAPI:
     self.logger = log
     self.lcd = lcd
     self.logger.info('volumio socket init: connecting...')
+    self.lcd.lcd_clear()
     self.lcd.lcd_display_string("connecting to Volumio", 2)
     self.socketIO = SocketIO('localhost', 3000)
     self.socketIO.on('connect', self.on_connect)
@@ -26,6 +27,7 @@ class VolumioAPI:
     self.logger.info('enter')
     
   def on_connect(self):
+    self.lcd.lcd_clear()    
     self.lcd.lcd_display_string("CONNECTED", 2)
     self.socketIO.emit('getBrowseSources', {})
     self.socketIO.wait(seconds=1)
