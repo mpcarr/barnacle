@@ -9,6 +9,7 @@ class VolumioAPI:
     self.logger = log
     self.lcd = lcd
     self.logger.info('volumio socket init: connecting...')
+    self.connected=False
     self.lcd.lcd_clear()
     self.lcd.lcd_display_string("Volumio connecting..", 2)
     self.socketIO = SocketIO('localhost', 3000)
@@ -18,7 +19,7 @@ class VolumioAPI:
     self.socketIO.on('pushBrowseSources', self.on_browseSources)
     
     connection_timeout = 60
-    while connection_timeout > 0 or self.connected:
+    while connection_timeout > 0 or self.connected == False:
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("Volumio connecting..", 2)
       self.lcd.lcd_display_string("Timeout in  {}".format(connection_timeout), 3)
