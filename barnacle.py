@@ -102,14 +102,14 @@ def setup():
   lcd.lcd_write_char(1)
   lcd.lcd_write_char(2)
 
-  lcd.lcd_write(0xC0)
-  lcd.lcd_write_char(3)
-  lcd.lcd_write_char(4)
-  lcd.lcd_write_char(5)
+  #lcd.lcd_write(0xC0)
+  #lcd.lcd_write_char(3)
+  #lcd.lcd_write_char(4)
+  #lcd.lcd_write_char(5)
 
-  lcd.lcd_load_custom_chars(fontdata1)
-  lcd.lcd_write(0x80)
-  lcd.lcd_write_char(0)
+  #lcd.lcd_load_custom_chars(fontdata1)
+  #lcd.lcd_write(0x80)
+  #lcd.lcd_write_char(0)
   
 
 
