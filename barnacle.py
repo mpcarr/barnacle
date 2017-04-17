@@ -99,7 +99,7 @@ def setup():
   lcd.lcd_load_custom_chars(fontdata1)
 
   count = 0
-  while (count < 20):
+  while (count < 100):
     lcd.lcd_clear()
     lcd.lcd_write(0x80 + count)
     lcd.lcd_write_char(0)
