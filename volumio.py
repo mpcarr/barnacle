@@ -26,8 +26,12 @@ class VolumioAPI:
     
   def on_connect(self):
     print('connect')
-    self.socketIO.emit('getState')
+    self.socketIO.emit('getBrowseSources', {}, self.on_browseSources)
+    self.socketIO.wait_for_callbacks(seconds=1)
 
+  def on_browseSources(self, *args):
+    print(args)
+    
   def on_disconnect(self):
     print('disconnect')
 
