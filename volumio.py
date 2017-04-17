@@ -28,7 +28,7 @@ class VolumioAPI:
     print('connect')
     self.socketIO.on('pushBrowseSources', self.on_browseSources)
     self.socketIO.emit('getBrowseSources', {})
-    self.socketIO.wait(seconds=1)
+    self.socketIO.wait(seconds=10)
 
   def on_browseSources(self, *args):
     print(args)
