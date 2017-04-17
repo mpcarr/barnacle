@@ -6,9 +6,9 @@ class VolumioAPI:
     self.logger = logger
     self.logger.info('started barnacle') 
     socketIO = SocketIO('localhost', 3000)
-    socketIO.on('connect', on_connect)
-    socketIO.on('disconnect', on_disconnect)
-    socketIO.on('reconnect', on_reconnect)
+    socketIO.on('connect', self.on_connect)
+    socketIO.on('disconnect', self.on_disconnect)
+    socketIO.on('reconnect', self.on_reconnect)
     
   def on_connect(self):
     self.logger.info('connect')
