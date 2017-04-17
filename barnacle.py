@@ -101,7 +101,7 @@ def setup():
   count = 0
   while (count < 21):
     lcd.lcd_clear()
-    lcd.lcd_write(0xC0 + count)
+    lcd.lcd_write(0x94 + count)
     if count < 20:
       lcd.lcd_write_char(0)
     if count < 19:
