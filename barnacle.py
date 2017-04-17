@@ -50,7 +50,9 @@ if __name__ == '__main__':     # Program start from here
   setup()
   try:
     print("barnacle")
-    signal.pause()
+    #signal.pause()
+    while 1:
+      sleep(0.1)
     #loop()
   except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
     destroy()
