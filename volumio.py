@@ -7,13 +7,13 @@ logger = logging.getLogger()
 logger.info('volumio api started')
 
 def on_connect():
-  logger.info('connect')
+  print('connect')
 
 def on_disconnect():
   print('disconnect')
 
 def on_reconnect():
-  print('reconnect') 
+  print('reconnect')
 
 class VolumioAPI:
   
