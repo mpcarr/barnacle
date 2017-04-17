@@ -2,7 +2,7 @@ from socketIO_client import SocketIO, LoggingNamespace
 
 class VolumioAPI:
   
-  global logger
+  #global logger
   
   def __init__(self, log):
     self.logger = log
