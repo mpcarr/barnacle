@@ -7,11 +7,12 @@ class VolumioAPI:
   def __init__(self, log):
     logger = log
     logger.info('volumio socket init: connecting...') 
+    testLogger()
     socketIO = SocketIO('localhost', 3000)
     socketIO.on('connect', self.on_connect)
     socketIO.on('disconnect', self.on_disconnect)
     socketIO.on('reconnect', self.on_reconnect)
-    testLogger()
+
     
   def testLogger()
     logger.info('test logger')
