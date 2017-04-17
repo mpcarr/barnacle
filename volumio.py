@@ -25,6 +25,8 @@ class VolumioAPI:
       self.socketIO.wait(seconds=1)
       sleep(1)
       connection_timeout = connection_timeout - 1
+      
+    self.lcd.lcd_clear()
    
   def menuDown():
     self.logger.info('menu down')
