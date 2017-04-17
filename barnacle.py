@@ -15,12 +15,12 @@ GPIO_BUTTON = 23
 
 def on_turn(delta):
   if delta == -1:
-    volumio.menuDown()
+    volumioCtrl.menuDown()
   else:
-    volumio.menuUp()
+    volumioCtrl.menuUp()
   
 def on_press(value):
-  volumio.enter()
+  volumioCtrl.enter()
 
 def setup():
   FORMAT = '%(asctime)-15s %(message)s'
@@ -34,8 +34,8 @@ def setup():
   global lcd
   lcd = i2c_lcd_driver.lcd()
   lcd.lcd_display_string("barnacle started", 2)
-  global volumio
-  volumio = volumio.VolumioAPI(logger, lcd)
+  global volumioCtrl
+  volumioCtrl = volumio.VolumioAPI(logger, lcd)
  
 #def loop():
 	#global globalCounter
