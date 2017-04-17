@@ -19,6 +19,8 @@ class VolumioAPI:
     self.socketIO.on('pushBrowseSources', self.on_browseSources)
     self.socketIO.wait(seconds=1)
     
+    self.lcd.lcd_clear()
+    
     connection_timeout = 60
     while connection_timeout > 0 and self.connected == False:
       if self.connected:
