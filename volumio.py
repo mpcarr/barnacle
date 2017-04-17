@@ -14,7 +14,7 @@ class VolumioAPI:
     #socketIO.on('reconnect', self.on_reconnect)
 
     
-  def testLogger(self)
+  def testLogger(self):
     self.logger.info('test logger')
     
   def on_connect(self):
