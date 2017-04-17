@@ -35,10 +35,10 @@ class VolumioAPI:
     
   def on_connect(self):
     self.connected = true
-    self.lcd.lcd_clear()    
-    self.lcd.lcd_display_string("CONNECTED", 2)
-    self.socketIO.emit('getBrowseSources', {})
-    self.socketIO.wait(seconds=1)
+    #self.lcd.lcd_clear()    
+    #self.lcd.lcd_display_string("CONNECTED", 2)
+    #self.socketIO.emit('getBrowseSources', {})
+    #self.socketIO.wait(seconds=1)
 
   def on_browseSources(self, *args):
     self.logger.info(args)
