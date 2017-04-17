@@ -9,13 +9,15 @@ class VolumioAPI:
     self.lcd = lcd
     self.logger.info('volumio socket init: connecting...')
     self.lcd.lcd_clear()
-    self.lcd.lcd_display_string("connecting to Volumio", 2)
+    self.lcd.lcd_display_string("Volumio connecting..", 2)
     self.socketIO = SocketIO('localhost', 3000)
     self.socketIO.on('connect', self.on_connect)
     self.socketIO.on('disconnect', self.on_disconnect)
     self.socketIO.on('reconnect', self.on_reconnect)
-    self.socketIO.on('pushBrowseSources', self.on_browseSources)    
-    self.socketIO.wait(seconds=1)
+    self.socketIO.on('pushBrowseSources', self.on_browseSources)
+    
+    While !self.connected
+      self.socketIO.wait(seconds=1)
    
   def menuDown():
     self.logger.info('menu down')
@@ -27,6 +29,7 @@ class VolumioAPI:
     self.logger.info('enter')
     
   def on_connect(self):
+    self.connected = true
     self.lcd.lcd_clear()    
     self.lcd.lcd_display_string("CONNECTED", 2)
     self.socketIO.emit('getBrowseSources', {})
