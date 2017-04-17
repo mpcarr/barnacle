@@ -20,6 +20,8 @@ class VolumioAPI:
     
     connection_timeout = 60
     while connection_timeout > 0 or self.connected == False:
+      if self.connected:
+        connection_timeout = 0
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("Volumio connecting..", 2)
       self.lcd.lcd_display_string("Timeout in  {}".format(connection_timeout), 3)
