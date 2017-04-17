@@ -32,7 +32,7 @@ def setup():
   encoder  = knob.RotaryEncoder(GPIO_A, GPIO_B, callback=on_turn, buttonPin=GPIO_BUTTON, buttonCallback=on_press)
   global lcd
   lcd = i2c_lcd_driver.lcd()
-  lcd.lcd_display_string("barnacle", 1)
+  lcd.lcd_display_string("barnacle", 2)
   fontdata1 = [      
         [ 0b11000,
 	0b01100,
@@ -47,8 +47,7 @@ def setup():
   lcd.lcd_load_custom_chars(fontdata1)
   lcd.lcd_write(0x80)
   lcd.lcd_write_char(0)
-  sleep(0.2)
-  lcd.lcd_strobe()
+  
 
 
 #def loop():
