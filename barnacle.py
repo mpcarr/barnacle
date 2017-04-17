@@ -18,7 +18,7 @@ GPIO_B = 17
 GPIO_BUTTON = 23
 
 def on_turn(delta):
-  if delta==-1
+  if delta == -1
     print("clockwise")
   else
     print("anti-clockwise")
