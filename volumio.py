@@ -26,7 +26,7 @@ class VolumioAPI:
         self.lcd.lcd_clear()
         self.lcd.lcd_display_string("Volumio connecting..", 2)
         self.lcd.lcd_display_string("Timeout in  {}".format(connection_timeout), 3)
-        self.socketIO.wait(seconds=1)
+        #self.socketIO.wait(seconds=1)
         sleep(1)
         connection_timeout = connection_timeout - 1
       
