@@ -2,7 +2,6 @@ import i2c_lcd_driver
 import signal
 import logging
 import knob
-from time import sleep
 import RPi.GPIO as GPIO
 import volumio
 
