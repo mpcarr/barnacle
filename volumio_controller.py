@@ -22,7 +22,7 @@ class VolumioApi:
     self.socketIO.on('disconnect', self.on_disconnect)
     self.socketIO.on('reconnect', self.on_reconnect)
     self.socketIO.on('pushBrowseSources', self.on_browseSources)
-    #self.socketIO.wait(seconds=1)
+    self.socketIO.wait(seconds=1)
     
     self.lcd.lcd_display_string("After Socket..", 3)
     
