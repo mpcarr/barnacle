@@ -12,7 +12,12 @@ class VolumioApi:
     self.connected = False
     self.lcd.lcd_clear()
     self.lcd.lcd_display_string("Volumio connecting..", 2)
-    self.socketIO = SocketIO('localhost', 3000)
+    
+    try:
+      self.socketIO = SocketIO('localhost', 3000)
+    execpt err:
+      self.logger.error(err)
+      
     self.socketIO.on('connect', self.on_connect)
     self.socketIO.on('disconnect', self.on_disconnect)
     self.socketIO.on('reconnect', self.on_reconnect)
