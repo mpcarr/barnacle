@@ -15,7 +15,7 @@ class VolumioApi:
     
     try:
       self.socketIO = SocketIO('localhost', 3000)
-    execpt err:
+    except err:
       self.logger.error(err)
       
     self.socketIO.on('connect', self.on_connect)
