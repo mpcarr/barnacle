@@ -34,7 +34,7 @@ def setup():
   lcd = i2c_lcd_driver.lcd()
   lcd.lcd_display_string("barnacle started", 2)
   global volumioCtrl
-  volumioCtrl = volumio_controller.VolumioAPI(logger, lcd)
+  volumioCtrl = volumio_controller.VolumioApi(logger, lcd)
  
 #def loop():
 	#global globalCounter
