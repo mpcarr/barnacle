@@ -9,7 +9,7 @@ class VolumioAPI:
     self.logger = log
     self.lcd = lcd
     self.logger.info('volumio socket init: connecting...')
-    self.connected=False
+    self.connected = False
     self.lcd.lcd_clear()
     self.lcd.lcd_display_string("Volumio connecting..", 2)
     self.socketIO = SocketIO('localhost', 3000)
