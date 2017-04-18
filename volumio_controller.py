@@ -32,6 +32,7 @@ class VolumioAPI:
         connection_timeout = connection_timeout - 1
       
     self.lcd.lcd_clear()
+    self.lcd.lcd_display_string("CONNECTED", 2)
    
   def menuDown():
     self.logger.info('menu down')
