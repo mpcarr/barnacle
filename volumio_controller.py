@@ -1,7 +1,7 @@
 from socketIO_client import SocketIO, LoggingNamespace
 from time import sleep
 
-class VolumioAPI:
+class VolumioApi:
   
   #global logger
   
