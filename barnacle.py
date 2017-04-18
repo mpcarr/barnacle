@@ -3,7 +3,7 @@ import signal
 import logging
 import knob
 import RPi.GPIO as GPIO
-import volumio-controller
+import volumio_controller
 
 # The two pins that the encoder uses (BCM numbering).
 GPIO_A = 4 
@@ -34,7 +34,7 @@ def setup():
   lcd = i2c_lcd_driver.lcd()
   lcd.lcd_display_string("barnacle started", 2)
   global volumioCtrl
-  volumioCtrl = volumio-controller.VolumioAPI(logger, lcd)
+  volumioCtrl = volumio_controller.VolumioAPI(logger, lcd)
  
 #def loop():
 	#global globalCounter
