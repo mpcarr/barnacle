@@ -6,7 +6,7 @@ import threading
 class VolumioApi:
   
   #global logger
-  def connect_to_socket(q):
+  def connect_to_socket(self,q):
     try:
       socket = SocketIO('localhost', 3000)
       socket.on('connect', self.on_connect)
