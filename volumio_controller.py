@@ -16,6 +16,7 @@ class VolumioApi:
     
     def connect_to_socket(q, port):
       try:
+        self.logger.info("connecting to socket on thread")
         socket = SocketIO('localhost', port)
         socket.on('connect', self.on_connect)
         socket.on('disconnect', self.on_disconnect)
