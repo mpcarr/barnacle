@@ -27,7 +27,7 @@ class VolumioApi:
     
     
     q = Queue.Queue()
-    t = threading.Thread(target=self.connect_to_socket, args = (q))
+    t = threading.Thread(target=self.connect_to_socket, args = (q,))
     t.daemon = True
     t.start()
     
