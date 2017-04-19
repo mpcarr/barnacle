@@ -41,13 +41,13 @@ class VolumioApi:
     self.lcd.lcd_clear()
     self.lcd.lcd_display_string("CONNECTED", 2)
    
-  def menuDown():
+  def menuDown(self):
     self.logger.info('menu down')
     
-  def menuUp():
+  def menuUp(self):
     self.logger.info('menu up')
     
-  def enter():
+  def enter(self):
     self.logger.info('enter')
     
   def on_connect(self):
