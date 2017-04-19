@@ -3,20 +3,21 @@ from time import sleep
 import Queue
 import threading
 
+def connect_to_socket(q):
+  try:
+    socket = SocketIO('localhost', 3000)
+    socket.on('connect', self.on_connect)
+    socket.on('disconnect', self.on_disconnect)
+    socket.on('reconnect', self.on_reconnect)
+    socket.wait(seconds=1)
+    q.put(socket)
+  except e:
+    self.logger.info(e)
+
+
 class VolumioApi:
   
-  #global logger
-  def connect_to_socket(self,q):
-    try:
-      socket = SocketIO('localhost', 3000)
-      socket.on('connect', self.on_connect)
-      socket.on('disconnect', self.on_disconnect)
-      socket.on('reconnect', self.on_reconnect)
-      socket.wait(seconds=1)
-      q.put(socket)
-    except e:
-      self.logger.info(e)
-  
+  #global logger  
   def __init__(self, log, lcd):
     self.logger = log
     self.lcd = lcd
@@ -27,7 +28,7 @@ class VolumioApi:
     
     
     q = Queue.Queue()
-    t = threading.Thread(target=self.connect_to_socket, args = (q))
+    t = threading.Thread(target=connect_to_socket, args = (q))
     t.daemon = True
     t.start()
     
