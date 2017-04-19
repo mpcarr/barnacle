@@ -6,7 +6,7 @@ import threading
 class VolumioApi:
   
   #global logger
-  def connecto_to_socket(q):
+  def connect_to_socket(q):
     socket = SocketIO('localhost', 3000)
     socketIO.on('connect', self.on_connect)
     socketIO.on('disconnect', self.on_disconnect)
@@ -24,7 +24,7 @@ class VolumioApi:
     
     
     q = Queue.Queue()
-    t = threading.Thread(target=connecto_to_socket, args = (q))
+    t = threading.Thread(target=self.connect_to_socket, args = (q))
     t.daemon = True
     t.start()
     
