@@ -7,12 +7,15 @@ class VolumioApi:
   
   #global logger
   def connect_to_socket(q):
-    socket = SocketIO('localhost', 3000)
-    socket.on('connect', self.on_connect)
-    socket.on('disconnect', self.on_disconnect)
-    socket.on('reconnect', self.on_reconnect)
-    socket.wait(seconds=1)
-    q.put(socket)
+    try:
+      socket = SocketIO('localhost', 3000)
+      socket.on('connect', self.on_connect)
+      socket.on('disconnect', self.on_disconnect)
+      socket.on('reconnect', self.on_reconnect)
+      socket.wait(seconds=1)
+      q.put(socket)
+    except e:
+      self.logger.info(e)
   
   def __init__(self, log, lcd):
     self.logger = log
