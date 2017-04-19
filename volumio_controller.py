@@ -14,18 +14,17 @@ class VolumioApi:
     self.lcd.lcd_clear()
     self.lcd.lcd_display_string("Volumio connecting..", 2)
     
-    def connect_to_socket(q, url):
-      print("connect")
-      #socket = SocketIO('localhost', 3000)
-      #socket.on('connect', self.on_connect)
-      #socket.on('disconnect', self.on_disconnect)
-      #socket.on('reconnect', self.on_reconnect)
-      #socket.wait(seconds=1)
-      q.put(1)
+    def connect_to_socket(q, port):
+      socket = SocketIO('localhost', port)
+      socket.on('connect', self.on_connect)
+      socket.on('disconnect', self.on_disconnect)
+      socket.on('reconnect', self.on_reconnect)
+      socket.wait(seconds=1)
+      q.put(socket)
       #self.logger.info(e)    
     
     q = Queue.Queue()
-    t = threading.Thread(target=connect_to_socket, args = (q, ''))
+    t = threading.Thread(target=connect_to_socket, args = (q, 3000))
     t.daemon = True
     t.start()
     
