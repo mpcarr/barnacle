@@ -4,6 +4,7 @@ import Queue
 import threading
 
 def connect_to_socket(q):
+  print("connect")
   try:
     #socket = SocketIO('localhost', 3000)
     #socket.on('connect', self.on_connect)
