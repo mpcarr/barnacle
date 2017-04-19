@@ -20,11 +20,14 @@ logger.info('started barnacle')
 
 def on_turn(delta):
   if delta == -1:
+    logger.info("turn clockwise")
     volumioCtrl.menuDown()
   else:
+    logger.info("turn clockwise")
     volumioCtrl.menuUp()
   
 def on_press(value):
+  logger.info("button pressed")
   volumioCtrl.enter()
 
 def setup():
@@ -54,6 +57,7 @@ if __name__ == '__main__':     # Program start from here
     #signal.pause()
     sleep(120)
     logger.info("waited 2 mins. now loop")
+    volumioCtrl = volumio_controller.VolumioApi(logger, lcd)
     while True:
       sleep(0.1)
     #loop()
