@@ -1,9 +1,18 @@
 from socketIO_client import SocketIO, LoggingNamespace
 from time import sleep
+import Queue
+import threading
 
 class VolumioApi:
   
   #global logger
+  def connecto_to_socket(q):
+    socket = SocketIO('localhost', 3000)
+    socketIO.on('connect', self.on_connect)
+    socketIO.on('disconnect', self.on_disconnect)
+    socketIO.on('reconnect', self.on_reconnect)
+    socket.wait(seconds=1)
+    q.put(socket)
   
   def __init__(self, log, lcd):
     self.logger = log
@@ -13,17 +22,14 @@ class VolumioApi:
     self.lcd.lcd_clear()
     self.lcd.lcd_display_string("Volumio connecting..", 2)
     
-    try:
-      self.socketIO = SocketIO('localhost', 3000)
-    except err:
-      self.logger.error(err)
-      
-    self.socketIO.on('connect', self.on_connect)
-    self.socketIO.on('disconnect', self.on_disconnect)
-    self.socketIO.on('reconnect', self.on_reconnect)
-    self.socketIO.on('pushBrowseSources', self.on_browseSources)
-    self.socketIO.wait(seconds=1)
     
+    q = Queue.Queue()
+    t = threading.Thread(target=connecto_to_socket, args = (q))
+    t.daemon = True
+    t.start()
+    
+    self.socketIO = q.get()
+    self.socketIO.on('pushBrowseSources', self.on_browseSources)
     self.lcd.lcd_display_string("After Socket..", 3)
     
     connection_timeout = 60
