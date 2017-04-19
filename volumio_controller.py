@@ -50,10 +50,10 @@ class VolumioApi:
         connection_timeout = connection_timeout - 1
       
     if self.connected == True:  
-      self.socketIO.on('pushBrowseSources', self.on_browseSources)
+      self.socket.on('pushBrowseSources', self.on_browseSources)
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("CONNECTED", 2)
-      self.socketIO.emit('getBrowseSources')
+      self.socket.emit('getBrowseSources')
     else:
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("FAILED TO CONNECT", 2)
