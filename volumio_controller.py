@@ -49,7 +49,7 @@ class VolumioApi:
       self.socketIO.on('pushBrowseSources', self.on_browseSources)
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("CONNECTED", 2)
-   else:
+    else:
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("FAILED TO CONNECT", 2)
       
