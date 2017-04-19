@@ -4,6 +4,7 @@ import logging
 import knob
 import RPi.GPIO as GPIO
 import volumio_controller
+from time import sleep
 
 # The two pins that the encoder uses (BCM numbering).
 GPIO_A = 4 
