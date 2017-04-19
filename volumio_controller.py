@@ -17,12 +17,12 @@ class VolumioApi:
     def connect_to_socket(q, port):
       try:
         self.logger.info("connecting to socket on thread")
-        socket = SocketIO('localhost', port)
-        socket.on('connect', self.on_connect)
-        socket.on('disconnect', self.on_disconnect)
-        socket.on('reconnect', self.on_reconnect)
-        socket.wait(seconds=1)
-        q.put(socket)
+        self.socket = SocketIO('localhost', port)
+        self.socket.on('connect', self.on_connect)
+        self.socket.on('disconnect', self.on_disconnect)
+        self.socket.on('reconnect', self.on_reconnect)
+        self.socket.wait(seconds=1)
+        q.put(1)
         #self.logger.info(e)    
       except:
         self.logger.info("caught ex")
@@ -37,9 +37,9 @@ class VolumioApi:
 
    
     connection_timeout = 60
-    while connection_timeout > 0:
+    while connection_timeout > 0 and self.connected == False:
       try:
-        self.socketIO = q.get(False) 
+        one = q.get(False) 
         if self.connected == True:
           connection_timeout = 0
       except Queue.Empty:
@@ -53,6 +53,7 @@ class VolumioApi:
       self.socketIO.on('pushBrowseSources', self.on_browseSources)
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("CONNECTED", 2)
+      self.socketIO.emit('getBrowseSources')
     else:
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("FAILED TO CONNECT", 2)
