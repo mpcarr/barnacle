@@ -3,19 +3,6 @@ from time import sleep
 import Queue
 import threading
 
-def connect_to_socket(q):
-  print("connect")
-  try:
-    #socket = SocketIO('localhost', 3000)
-    #socket.on('connect', self.on_connect)
-    #socket.on('disconnect', self.on_disconnect)
-    #socket.on('reconnect', self.on_reconnect)
-    #socket.wait(seconds=1)
-    q.put(1)
-  except e:
-    #self.logger.info(e)
-
-
 class VolumioApi:
   
   #global logger  
@@ -80,3 +67,16 @@ class VolumioApi:
 
   def on_reconnect(self):
     print('reconnect')
+    
+    
+def connect_to_socket(q):
+  print("connect")
+  try:
+    #socket = SocketIO('localhost', 3000)
+    #socket.on('connect', self.on_connect)
+    #socket.on('disconnect', self.on_disconnect)
+    #socket.on('reconnect', self.on_reconnect)
+    #socket.wait(seconds=1)
+    q.put(1)
+  except e:
+    #self.logger.info(e)
