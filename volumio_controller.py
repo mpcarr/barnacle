@@ -8,9 +8,9 @@ class VolumioApi:
   #global logger
   def connect_to_socket(q):
     socket = SocketIO('localhost', 3000)
-    socketIO.on('connect', self.on_connect)
-    socketIO.on('disconnect', self.on_disconnect)
-    socketIO.on('reconnect', self.on_reconnect)
+    socket.on('connect', self.on_connect)
+    socket.on('disconnect', self.on_disconnect)
+    socket.on('reconnect', self.on_reconnect)
     socket.wait(seconds=1)
     q.put(socket)
   
