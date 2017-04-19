@@ -35,7 +35,7 @@ def setup():
   lcd = i2c_lcd_driver.lcd()
   lcd.lcd_display_string("barnacle started", 2)
   global volumioCtrl
-  volumioCtrl = volumio_controller.VolumioApi(logger, lcd)
+  #volumioCtrl = volumio_controller.VolumioApi(logger, lcd)
  
 #def loop():
 	#global globalCounter
@@ -49,10 +49,12 @@ def destroy():
 if __name__ == '__main__':     # Program start from here
   setup()
   try:
-    print("barnacle")
-    signal.pause()
-    #while 1:
-      #sleep(0.1)
+    logger.info("barnacle about to wait for 2 mins")
+    #signal.pause()
+    sleep(120)
+    logger.info("waited 2 mins. now loop")
+    while True:
+      sleep(0.1)
     #loop()
   except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
     destroy()
