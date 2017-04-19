@@ -5,14 +5,14 @@ import threading
 
 def connect_to_socket(q):
   try:
-    socket = SocketIO('localhost', 3000)
-    socket.on('connect', self.on_connect)
-    socket.on('disconnect', self.on_disconnect)
-    socket.on('reconnect', self.on_reconnect)
-    socket.wait(seconds=1)
-    q.put(socket)
+    #socket = SocketIO('localhost', 3000)
+    #socket.on('connect', self.on_connect)
+    #socket.on('disconnect', self.on_disconnect)
+    #socket.on('reconnect', self.on_reconnect)
+    #socket.wait(seconds=1)
+    q.put(1)
   except e:
-    self.logger.info(e)
+    #self.logger.info(e)
 
 
 class VolumioApi:
@@ -32,9 +32,13 @@ class VolumioApi:
     t.daemon = True
     t.start()
     
-    self.socketIO = q.get()
-    self.socketIO.on('pushBrowseSources', self.on_browseSources)
-    self.lcd.lcd_display_string("After Socket..", 3)
+    one = q.get()
+    self.lcd.lcd_clear()
+    self.lcd.lcd_display_string("here")
+    sleep(0.5)
+    #self.socketIO = q.get()
+    #self.socketIO.on('pushBrowseSources', self.on_browseSources)
+    #self.lcd.lcd_display_string("After Socket..", 3)
     
     connection_timeout = 60
     while connection_timeout > 0 and self.connected == False:
