@@ -53,10 +53,10 @@ def destroy():
 if __name__ == '__main__':     # Program start from here
   setup()
   try:
-    logger.info("barnacle about to wait for 2 mins")
+    #logger.info("barnacle about to wait for 2 mins")
     #signal.pause()
-    sleep(120)
-    logger.info("waited 2 mins. now loop")
+    #sleep(120)
+    #logger.info("waited 2 mins. now loop")
     volumioCtrl = volumio_controller.VolumioApi(logger, lcd)
     while True:
       sleep(0.1)
