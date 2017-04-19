@@ -54,6 +54,7 @@ class VolumioApi:
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("CONNECTED", 2)
       self.socket.emit('getBrowseSources')
+      self.socket.wait(seconds=1)
     else:
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("FAILED TO CONNECT", 2)
