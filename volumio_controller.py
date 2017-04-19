@@ -3,8 +3,9 @@ from time import sleep
 import Queue
 import threading
 
-
-def connect_to_socket(q):
+class VolumioApi:
+  
+  def connect_to_socket(q):
   print("connect")
   try:
     #socket = SocketIO('localhost', 3000)
@@ -15,8 +16,7 @@ def connect_to_socket(q):
     q.put(1)
   except e:
     #self.logger.info(e)
-
-class VolumioApi:
+  
   
   #global logger  
   def __init__(self, log, lcd):
@@ -29,7 +29,7 @@ class VolumioApi:
     
     
     q = Queue.Queue()
-    t = threading.Thread(target=connect_to_socket, args = (q))
+    t = threading.Thread(target=self.connect_to_socket, args = (q))
     t.daemon = True
     t.start()
     
