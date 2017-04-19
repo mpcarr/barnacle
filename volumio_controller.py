@@ -28,25 +28,26 @@ class VolumioApi:
     t.daemon = True
     t.start()
     
-    one = q.get()
-    self.lcd.lcd_clear()
-    self.lcd.lcd_display_string("here")
-    sleep(0.5)
-    #self.socketIO = q.get()
-    #self.socketIO.on('pushBrowseSources', self.on_browseSources)
-    #self.lcd.lcd_display_string("After Socket..", 3)
+#    self.socketIO = q.get()
     
+
+   
     connection_timeout = 60
-    while connection_timeout > 0 and self.connected == False:
-      if self.connected:
-        connection_timeout = 0
-      else:
+    while connection_timeout > 0:
+      try:
+        self.socketIO = q.get(False) 
+        if self.connected == True:
+          connection_timeout = 0
+      except Queue.Empty:
         self.lcd.lcd_clear()
         self.lcd.lcd_display_string("Volumio connecting..", 2)
         self.lcd.lcd_display_string("Timeout in  {}".format(connection_timeout), 3)
-        self.socketIO.wait(seconds=1)
-        #sleep(1)
+        sleep(1)
         connection_timeout = connection_timeout - 1
+      
+      
+      
+    self.socketIO.on('pushBrowseSources', self.on_browseSources)
       
     self.lcd.lcd_clear()
     self.lcd.lcd_display_string("CONNECTED", 2)
