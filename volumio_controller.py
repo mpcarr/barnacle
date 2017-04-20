@@ -110,6 +110,7 @@ class VolumioApi:
     self.logger.info(data)
     line = 1
     for musicSource in data:
+      self.logger.info("loop")	
       #if line < 5:	
         #self.lcd.lcd_write(musicSource[0]["name"],line,1)
         #line = line + 1
