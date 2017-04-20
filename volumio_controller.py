@@ -105,7 +105,7 @@ class VolumioApi:
     #self.socketIO.wait(seconds=1)
 
   def on_browseSources(self, *args):
-    data = json.dumps(args)		
+    data = json.dumps(args[0])		
     self.logger.info(pprint(data))
     line = 1
     for musicSource in data:
