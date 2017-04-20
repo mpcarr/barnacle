@@ -107,7 +107,7 @@ class VolumioApi:
   def on_browseSources(self, *args):
     #self.logger.info(args[0])
     data = json.dumps(args[0])
-    data = json.load(data)
+    data = json.loads(data)
     self.logger.info(data)
     line = 1
     for musicSource in data:
