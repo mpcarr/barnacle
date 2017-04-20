@@ -107,6 +107,8 @@ class VolumioApi:
     print("lcd")
     while not QUEUE.empty():
       delta = QUEUE.get()
+      self.lcd.lcd_clear()
+      self.lcd.lcd_display_string(delta)
       self.logger.info(delta)   
 	
 	
