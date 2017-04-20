@@ -82,7 +82,7 @@ class VolumioApi:
     ]
 
     self.lcd.lcd_load_custom_chars(menuArrow)
-    self.lcd.lcd_clear()
+    self.lcd.lcd_display_string('',self.currentLine,0)
     self.lcd.lcd_write(self.lines[self.currentLine])
     self.lcd.lcd_write_char(0)   
     self.logger.info('menu down')
