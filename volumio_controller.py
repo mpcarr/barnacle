@@ -88,17 +88,17 @@ class VolumioApi:
     self.lcd.lcd_load_custom_chars(menuArrow)
 
     #clear the selection arrow
-    self.lcd.lcd_write(self.lines[0])
-    self.lcd.lcd_write(ord(" "))
+    #self.lcd.lcd_write(self.lines[0])
+    #self.lcd.lcd_write(ord(" "))
 	
 	
-    self.lcd.lcd_write(self.lines[self.currentLine])
-    self.lcd.lcd_write_char(0)   
-    self.logger.info('menu down')
-    self.currentLine = self.currentLine + 1
-    if self.currentLine == 4:
-      self.currentLine = 0
-    sleep(0.1)
+    #self.lcd.lcd_write(self.lines[self.currentLine])
+    #self.lcd.lcd_write_char(0)   
+    #self.logger.info('menu down')
+    #self.currentLine = self.currentLine + 1
+    #if self.currentLine == 4:
+      #self.currentLine = 0
+    #sleep(0.1)
     
   def menuUp(self):
     self.logger.info('menu up')
