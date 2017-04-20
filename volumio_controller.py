@@ -113,7 +113,7 @@ class VolumioApi:
     for musicSource in data:
       self.logger.info(musicSource["name"])	
       if line < 5:	
-        self.lcd.lcd_write(musicSource["name"],line,1)
+        self.lcd.lcd_display_string(musicSource["name"],line,1)
         line = line + 1
     
   def on_disconnect(self):
