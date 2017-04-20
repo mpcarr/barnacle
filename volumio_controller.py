@@ -69,13 +69,13 @@ class VolumioApi:
     self.currentLine = 0
       
   def menuDown(self):
-    QUEUE.put(-1)
+    QUEUE.put("down")
     
   def menuUp(self):
-    QUEUE.put(1)
+    QUEUE.put("up")
     
   def enter(self):
-    QUEUE.put(2)
+    QUEUE.put("enter")
     
   def on_connect(self):
     self.connected = True
