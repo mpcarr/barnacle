@@ -66,8 +66,8 @@ class VolumioApi:
     self.currentLine = 0
       
   def menuDown(self):
-    menuArrow = [      
-      [ 0b11000,
+    menuArrow = [
+	    [0b11000,
 	     0b01100,
 	     0b00110,
 	     0b00011,
@@ -76,13 +76,13 @@ class VolumioApi:
 	     0b01100,
 	     0b11000 ],
 	    [0b00000,
-	0b00000,
-	0b00000,
-	0b00000,
-	0b00000,
-	0b00000,
-	0b00000,
-	0b00000]
+	     0b00000,
+	     0b00000,
+	     0b00000,
+	     0b00000,
+	     0b00000,
+	     0b00000,
+	     0b00000],
     ]
 
     self.lcd.lcd_load_custom_chars(menuArrow)
