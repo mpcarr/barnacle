@@ -5,7 +5,7 @@ import threading
 import json
 from pprint import pprint
 
-QUEUE = Queue()
+QUEUE = Queue.Queue()
 EVENT = threading.Event()
 
 class VolumioApi:
