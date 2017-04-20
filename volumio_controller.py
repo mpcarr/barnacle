@@ -85,8 +85,9 @@ class VolumioApi:
     self.lcd.lcd_write_char(0)   
     self.logger.info('menu down')
     self.currentLine = self.currentLine + 1
-    if self.currentLine == 3:
+    if self.currentLine == 4:
       self.currentLine = 0
+    sleep(0.1)
     
   def menuUp(self):
     self.logger.info('menu up')
