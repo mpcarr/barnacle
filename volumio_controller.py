@@ -89,7 +89,7 @@ class VolumioApi:
 
     #clear the selection arrow
     self.lcd.lcd_write(0x80)
-    #self.lcd.lcd_write(ord(" "))
+    self.lcd.lcd_write(ord('A'))
 	
 	
     #self.lcd.lcd_write(self.lines[self.currentLine])
