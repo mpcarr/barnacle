@@ -2,6 +2,8 @@ from socketIO_client import SocketIO, LoggingNamespace
 from time import sleep
 import Queue
 import threading
+import json
+from pprint import pprint
 
 class VolumioApi:
    
@@ -103,6 +105,8 @@ class VolumioApi:
     #self.socketIO.wait(seconds=1)
 
   def on_browseSources(self, *args):
+    data = json.load(args)
+    pprint(data)		
     self.logger.info(args)
     
   def on_disconnect(self):
