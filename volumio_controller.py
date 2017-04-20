@@ -103,7 +103,7 @@ class VolumioApi:
   def on_reconnect(self):
     print('reconnect')
 
-  def process_lcd(self)
+  def process_lcd(self):
     print("lcd")
     while not QUEUE.empty():
       delta = QUEUE.get()
