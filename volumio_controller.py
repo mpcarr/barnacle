@@ -96,7 +96,7 @@ class VolumioApi:
       self.lcd.lcd_write(self.lines[3]) # line 1 pos 1
       self.lcd.lcd_write_char(1)
     else:
-      self.lcd.lcd_write(self.lines[self.currentLine])
+      self.lcd.lcd_write(self.lines[self.currentLine-1])
       self.lcd.lcd_write_char(1)
 	
     sleep(1)
