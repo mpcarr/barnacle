@@ -5,6 +5,9 @@ import threading
 import json
 from pprint import pprint
 
+QUEUE = Queue()
+EVENT = threading.Event()
+
 class VolumioApi:
    
   def __init__(self, log, lcd):
@@ -66,53 +69,13 @@ class VolumioApi:
     self.currentLine = 0
       
   def menuDown(self):
-    menuArrow = [
-	    [0b11000,
-	     0b01100,
-	     0b00110,
-	     0b00011,
-	     0b00011,
-	     0b00110,
-	     0b01100,
-	     0b11000 ],
-	    [0b00000,
-	0b00000,
-	0b00000,
-	0b00000,
-	0b00000,
-	0b00000,
-	0b00000,
-	0b00000],
-    ]
-
-    self.lcd.lcd_load_custom_chars(menuArrow)
-
-    #clear the selection arrow
-    self.lcd.lcd_write(0x02) # return home
-    #self.lcd.lcd_write(0x80) # line 1 pos 1
-    #self.lcd.lcd_display_string("A")
-
-    if self.currentLine == 0:
-      self.lcd.lcd_write(self.lines[3]) # line 1 pos 1
-      self.lcd.lcd_write_char(1)
-    else:
-      self.lcd.lcd_write(self.lines[self.currentLine-1])
-      self.lcd.lcd_write_char(1)
-	
-    self.lcd.lcd_write(0x02) # return home	 
-    self.lcd.lcd_write(self.lines[self.currentLine])
-    self.lcd.lcd_write_char(0)   
-    #self.logger.info('menu down')
-    self.currentLine = self.currentLine + 1
-    if self.currentLine == 4:
-      self.currentLine = 0
-    #sleep(0.1)
+    QUEUE.put(-1)
     
   def menuUp(self):
-    self.logger.info('menu up')
+    QUEUE.put(1)
     
   def enter(self):
-    self.logger.info('enter')
+    QUEUE.put(2)
     
   def on_connect(self):
     self.connected = True
@@ -139,4 +102,11 @@ class VolumioApi:
 
   def on_reconnect(self):
     print('reconnect')
-    
+
+  def process_lcd(self)
+    print("lcd")
+    while not QUEUE.empty():
+      delta = QUEUE.get()
+      self.logger.info(delta)   
+	
+	
