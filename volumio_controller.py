@@ -89,7 +89,7 @@ class VolumioApi:
 
     #clear the selection arrow
     self.lcd.lcd_write(0x02) # return home
-    self.lcd.lcd_write(0x80) # line 1 pos 1
+    #self.lcd.lcd_write(0x80) # line 1 pos 1
     #self.lcd.lcd_display_string("A")
 
     if self.currentLine == 0:
@@ -99,6 +99,8 @@ class VolumioApi:
       self.lcd.lcd_write(self.lines[self.currentLine])
       self.lcd.lcd_write_char(1)
 	
+	
+    self.lcd.lcd_write(0x02) # return home	 
     self.lcd.lcd_write(self.lines[self.currentLine])
     self.lcd.lcd_write_char(0)   
     #self.logger.info('menu down')
