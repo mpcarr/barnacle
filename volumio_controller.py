@@ -7,7 +7,6 @@ from pprint import pprint
 
 class VolumioApi:
    
-  #global logger  
   def __init__(self, log, lcd):
     self.logger = log
     self.lcd = lcd
@@ -20,6 +19,7 @@ class VolumioApi:
     
     def connect_to_socket(q, port):
       try:
+	sleep(10); # Give volumio time to come up
         self.logger.info("connecting to socket on thread")
         self.socket = SocketIO('localhost', port)
         self.socket.on('connect', self.on_connect)
@@ -36,10 +36,6 @@ class VolumioApi:
     t.daemon = True
     t.start()
     
-#    self.socketIO = q.get()
-    
-
-   
     connection_timeout = 60
     while connection_timeout > 0 and self.connected == False:
       try:
@@ -90,12 +86,10 @@ class VolumioApi:
     ]
 
     self.lcd.lcd_load_custom_chars(menuArrow)
-    self.lcd.lcd_write(1)
-    self.lcd.lcd_write(2)
-    self.lcd.lcd_write(3)
-    self.lcd.lcd_write(4)
-    self.lcd.lcd_write_char(1)
-	
+
+    #clear the selection arrow
+    self.lcd.lcd_write(self.lines[0])
+    self.lcd.lcd_write(ord(" "))
 	
 	
     self.lcd.lcd_write(self.lines[self.currentLine])
