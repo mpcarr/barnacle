@@ -105,9 +105,13 @@ class VolumioApi:
     #self.socketIO.wait(seconds=1)
 
   def on_browseSources(self, *args):
-    data = json.dumps(args)
-    pprint(data)		
-    self.logger.info(args)
+    data = json.dumps(args)		
+    self.logger.info(pprint(data))
+    line = 1
+    for musicSource in data:
+      if line < 5:	
+        self.lcd.lcd_write(musicSource["name"],line,1)
+        line = line + 1
     
   def on_disconnect(self):
     print('disconnect')
