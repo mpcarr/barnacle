@@ -13,6 +13,8 @@ class VolumioApi:
     self.connected = False
     self.lcd.lcd_clear()
     self.lcd.lcd_display_string("Volumio connecting..", 2)
+      
+    self.lines = [0x80, 0xC0, 0x94, 0xd4]
     
     def connect_to_socket(q, port):
       try:
@@ -62,8 +64,29 @@ class VolumioApi:
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("FAILED TO CONNECT", 2)
       
+      
+    self.currentLine = 0
+      
   def menuDown(self):
+    menuArrow = [      
+      [ 0b11000,
+	     0b01100,
+	     0b00110,
+	     0b00011,
+	     0b00011,
+	     0b00110,
+	     0b01100,
+	     0b11000 ]
+    ]
+
+    self.lcd.lcd_load_custom_chars(menuArrow)
+    self.lcd.lcd_clear()
+    self.lcd.lcd_write(self.lines[self.currentLine])
+    self.lcd.lcd_write_char(0)   
     self.logger.info('menu down')
+    self.currentLine = self.currentLine + 1
+    if self.currentLine == 3:
+      self.currentLine = 0
     
   def menuUp(self):
     self.logger.info('menu up')
