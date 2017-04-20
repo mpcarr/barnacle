@@ -59,6 +59,7 @@ if __name__ == '__main__':     # Program start from here
     #logger.info("waited 2 mins. now loop")
     volumioCtrl = volumio_controller.VolumioApi(logger, lcd)
     while True:
+      volumioCtrl.processLcd()
       sleep(0.1)
     #loop()
   except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
