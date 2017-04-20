@@ -43,11 +43,14 @@ class VolumioApi:
         if self.connected == True:
           connection_timeout = 0
       except Queue.Empty:
-        self.lcd.lcd_clear()
-        self.lcd.lcd_display_string("Volumio connecting..", 2)
-        self.lcd.lcd_display_string("Timeout in  {}".format(connection_timeout), 3)
-        sleep(1)
-        connection_timeout = connection_timeout - 1
+        if self.connected == True:
+          connection_timeout = 0
+        else:
+          self.lcd.lcd_clear()
+          self.lcd.lcd_display_string("Volumio connecting..", 2)
+          self.lcd.lcd_display_string("Timeout in  {}".format(connection_timeout), 3)
+          sleep(1)
+          connection_timeout = connection_timeout - 1
       
     if self.connected == True:  
       self.socket.on('pushBrowseSources', self.on_browseSources)
