@@ -109,7 +109,7 @@ class VolumioApi:
     data = json.dumps(args[0])		
     self.logger.info(data)
     line = 1
-    for musicSource in data:
+    for musicSource in data[0]:
       self.logger.info(musicSource)	
       #if line < 5:	
         #self.lcd.lcd_write(musicSource[0]["name"],line,1)
