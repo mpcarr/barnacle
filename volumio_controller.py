@@ -22,7 +22,7 @@ class VolumioApi:
     
     def connect_to_socket(q, port):
       try:
-	#sleep(10); # Give volumio time to come up
+        #sleep(10); # Give volumio time to come up
         self.logger.info("connecting to socket on thread")
         self.socket = SocketIO('localhost', port)
         self.socket.on('connect', self.on_connect)
@@ -30,7 +30,6 @@ class VolumioApi:
         self.socket.on('reconnect', self.on_reconnect)
         self.socket.wait(seconds=1)
         q.put(1)
-        #self.logger.info(e)    
       except:
         self.logger.info("caught ex")
          
