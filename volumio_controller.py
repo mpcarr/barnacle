@@ -146,7 +146,7 @@ class VolumioApi:
         self.lcd.lcd_write(self.lines[3])
         self.lcd.lcd_write_char(1)
       else:
-        self.lcd.lcd_write(self.lines[self.currentLine])
+        self.lcd.lcd_write(self.lines[self.currentLine-1])
         self.lcd.lcd_write_char(1)
 
       self.lcd.lcd_write(self.lines[self.currentLine])
@@ -167,7 +167,7 @@ class VolumioApi:
           self.lcd.lcd_write(self.lines[3])
           self.lcd.lcd_write_char(1)
         else:
-          self.lcd.lcd_write(self.lines[self.currentLine])
+          self.lcd.lcd_write(self.lines[self.currentLine-1])
           self.lcd.lcd_write_char(1)
 
         self.lcd.lcd_write(self.lines[self.currentLine])
