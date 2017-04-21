@@ -22,6 +22,8 @@ class VolumioApi:
     self.states = {0: self.browseSources
                }
 
+    self.menuLines = 0
+
     menuArrow = [
       [0b11000,
        0b01100,
@@ -88,9 +90,13 @@ class VolumioApi:
     else:
       self.lcd.lcd_clear()
       self.lcd.lcd_display_string("FAILED TO CONNECT", 2)
-      
-      
+
+    self.lcd.lcd_write(0x02)  # return home
+    self.lcd.lcd_write(0x80)  # line 1 pos 1
     self.currentLine = 0
+    self.lcd.lcd_write(self.lines[self.currentLine])
+    self.lcd.lcd_write_char(0)
+
       
   def menuDown(self):
     QUEUE.put(-1)
@@ -115,6 +121,7 @@ class VolumioApi:
     self.logger.info(data)
     line = 1
     self.lcd.lcd_clear()
+    self.menuLines = len(data)
     for musicSource in data:
       self.logger.info(musicSource["name"])	
       if line < 5:	
@@ -136,11 +143,10 @@ class VolumioApi:
     #menu navigation or select
     if cmd == -1:
       #menu down
-
+      self.currentLine = self.currentLine + 1
       # clear the selection arrow
       self.lcd.lcd_write(0x02)  # return home
       self.lcd.lcd_write(0x80)  # line 1 pos 1
-      # self.lcd.lcd_display_string("A")
 
       if self.currentLine == 0:
         self.lcd.lcd_write(self.lines[3])
@@ -152,7 +158,7 @@ class VolumioApi:
       self.lcd.lcd_write(self.lines[self.currentLine])
       self.lcd.lcd_write_char(0)
       # self.logger.info('menu down')
-      self.currentLine = self.currentLine + 1
+
       if self.currentLine == 4:
         self.currentLine = 0
         # sleep(0.1)
