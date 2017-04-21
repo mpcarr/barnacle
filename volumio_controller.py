@@ -19,7 +19,7 @@ class VolumioApi:
     self.lcd.lcd_display_string("Volumio connecting..", 2)
 
     self.currentState = 0;
-    self.states = {0: browseSources
+    self.states = {0: self.browseSources
                }
 
     menuArrow = [
