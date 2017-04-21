@@ -177,9 +177,4 @@ class VolumioApi:
           # sleep(0.1)
         #menu up
       else:
-        #select
-
-
-
-	
-	
+        print("select")
