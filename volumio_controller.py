@@ -39,7 +39,7 @@ class VolumioApi:
     t.start()
     
     connection_timeout = 60
-    while connection_timeout > 0 and self.connected == False:
+    while connection_timeout > 0 and self.connected is False:
       try:
         one = q.get(False) 
         if self.connected == True:
